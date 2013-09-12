@@ -229,3 +229,4 @@ pip-log.txt
 .DS_Store
 Thumbs.db
 Desktop.ini
+Builds/
