@@ -6,7 +6,7 @@
 /*/
 using UnityEngine;
 using System.Collections;
- 
+ //test
 public class PinchZoom : TouchLogic
 {
 	public float zoomSpeed = 5.0f;
