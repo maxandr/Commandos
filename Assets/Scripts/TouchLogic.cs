@@ -51,17 +51,17 @@ public class TouchLogic : MonoBehaviour
 				if (Input.GetTouch (i).phase == TouchPhase.Stationary) {
 					this.SendMessage ("OnTouchStayedAnywhere");
 				}
-				/*
-    //this is for 3d objects with colliders
-    if(Input.GetTouch(i).phase == TouchPhase.Began)
-    {
-     ray = Camera.mainCamera.ScreenPointToRay(Input.GetTouch(i).position);//creates ray from screen point position
-     if(Physics.Raycast(ray, out rayHitInfo))
-     {
-      rayHitInfo.transform.gameObject.SendMessage("OnTouchBegan3D");
-     }
-    }
-    */
+								/*
+				    //this is for 3d objects with colliders
+				    if(Input.GetTouch(i).phase == TouchPhase.Began)
+				    {
+				     ray = Camera.mainCamera.ScreenPointToRay(Input.GetTouch(i).position);//creates ray from screen point position
+				     if(Physics.Raycast(ray, out rayHitInfo))
+				     {
+				      rayHitInfo.transform.gameObject.SendMessage("OnTouchBegan3D");
+				     }
+				    }
+				    */
 			}
 		}
 	}
