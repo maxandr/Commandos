@@ -6,10 +6,11 @@
 /*/
 using UnityEngine;
 using System.Collections;
- //test
+
+//test
 public class PinchZoom : TouchLogic
 {
-	public float zoomSpeed = 5.0f;
+	public float zoomSpeed = 3.0f;
 	public float MIN_ZOOM = 10.0f;
 	public float MAX_ZOOM = 50.0f;
 	//buckets for caching our touch positions
@@ -25,7 +26,8 @@ public class PinchZoom : TouchLogic
 	Vector3 current_position = Vector3.zero;
 	Vector3 camera_position = Vector3.zero;
 	private float current_camera_y_position;
-
+	Ray ZoomRay;
+	bool lNeedToSetRay=false;
 	void OnTouchMovedAnywhere ()
 	{
 		if (Input.touchCount == 2) {
@@ -41,6 +43,7 @@ public class PinchZoom : TouchLogic
 	{
 		if (Input.touchCount == 2) {
 			Zoom ();
+		} else {
 		}
 	}
 
@@ -50,6 +53,9 @@ public class PinchZoom : TouchLogic
 			hit_position = Input.GetTouch (0).position;
 			camera_position = Camera.mainCamera.transform.position;
 			current_camera_y_position = camera_position.y;		
+		}
+		else if(Input.touchCount == 2) {
+			lNeedToSetRay=true;
 		}
 	}
 
@@ -83,7 +89,6 @@ public class PinchZoom : TouchLogic
 	//if the delta distance increased, zoom in, if delta distance decreased, zoom out
 	void Zoom ()
 	{
-		
 		Vector3 CameraOldPosition = Camera.mainCamera.transform.position;
 		//finds the distance between your moved touches
 		//we dont want to find the distance between 1 finger and nothing
@@ -105,23 +110,36 @@ public class PinchZoom : TouchLogic
 			currDist = 0.0f;
 			lastDist = 0.0f;
 		}
+		Ray tZoomRay;
+		//if (mZoomstart) {
+		tZoomRay = Camera.mainCamera.ScreenPointToRay (new Vector2 ((currTouch2.x + currTouch1.x) / 2.0f, (currTouch2.y + currTouch1.y) / 2.0f));
+		//mZoomstart = false;
+		Vector3 _trans;
+		_trans = tZoomRay.direction;
+		_trans.z = -1 * _trans.z;
+		if(lNeedToSetRay) {
+			Debug.Log ("ZoomVector3 setted");
+			lNeedToSetRay=false;
+			ZoomRay = tZoomRay;
+		}
+		Debug.DrawRay (ZoomRay.origin, ZoomRay.direction * 100, Color.blue);
+		
 		//Calculate the zoom magnitude
 		zoomFactor = Mathf.Clamp (lastDist - currDist, -30.0f, 30.0f);
-		//apply zoom to our camera
-		Camera.mainCamera.transform.Translate (Vector3.back * zoomFactor * zoomSpeed * Time.deltaTime);
+		//apply zoom to our camera	
+		float zoomDistance = (-1) * zoomFactor * zoomSpeed * Time.deltaTime;
+		Camera.mainCamera.transform.Translate (ZoomRay.direction * zoomDistance, Space.World);
+		
+		//	Camera.mainCamera.transform.Translate (/*Vector3.back*/ZoomVector * zoomFactor * zoomSpeed * Time.deltaTime);
 		Vector3 _temp = Camera.mainCamera.transform.position;
-		if(_temp.y<MIN_ZOOM) {
+		if (_temp.y < MIN_ZOOM) {
 			CameraOldPosition.y = MIN_ZOOM;
 			Camera.mainCamera.transform.position = CameraOldPosition;
-		}
-		else if(_temp.y>MAX_ZOOM) {
+		} else if (_temp.y > MAX_ZOOM) {
 			CameraOldPosition.y = MAX_ZOOM;
 			Camera.mainCamera.transform.position = CameraOldPosition;
-		}
-		else {
-		//float _y = Mathf.Clamp (_temp.y, MIN_ZOOM, MAX_ZOOM);
-		//_temp.y = _y;
-		Camera.mainCamera.transform.position = _temp;
+		} else {
+			Camera.mainCamera.transform.position = _temp;
 		}
 	}
 }
