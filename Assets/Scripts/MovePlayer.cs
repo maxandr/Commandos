@@ -31,7 +31,16 @@ public class MovePlayer : MonoBehaviour
 
 	private void Update ()
 	{
-		
+#if UNITY_EDITOR
+		if (Input.GetMouseButtonUp (0)) {
+			//if(Input.touches.Length==1)
+			
+			ray = UnityEngine.Camera.mainCamera.ScreenPointToRay (Input.mousePosition);
+			if (Physics.Raycast (ray, out hit, 10000.0f)) {
+				target = hit.point;
+			}
+		}
+#else
 		if (Input.touches.Length == 1) {
 			if (Input.GetTouch (0).phase == TouchPhase.Began) {
 				CanTouchUp = true;
@@ -47,15 +56,7 @@ public class MovePlayer : MonoBehaviour
 				}
 			}
 		}
-		/*
-		if (Input.GetMouseButtonUp (0)) {
-			//if(Input.touches.Length==1)
-			
-			ray = UnityEngine.Camera.mainCamera.ScreenPointToRay (Input.mousePosition);
-			if (Physics.Raycast (ray, out hit, 10000.0f)) {
-				target = hit.point;
-			}
-		}*/
+#endif
 		LookAtThis ();
 		MoveTo ();
 	}
