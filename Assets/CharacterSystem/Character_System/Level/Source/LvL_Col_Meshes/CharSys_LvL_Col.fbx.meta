@@ -1,0 +1,111 @@
+fileFormatVersion: 2
+guid: 50726ddedaa1f457ba67ea62be70237f
+ModelImporter:
+  serializedVersion: 15
+  fileIDToRecycleName:
+    100000: Base_Col
+    100002: //RootNode
+    100004: Detail_Col
+    100006: Tower_Col_1
+    100008: Tower_Col_2
+    100010: Tower_Col_3
+    100012: Tower_Col_4
+    100014: Tower_Col_5
+    100016: Tower_Col_6
+    100018: Tower_Col_7
+    100020: Tower_Col_8
+    400000: Base_Col
+    400002: //RootNode
+    400004: Detail_Col
+    400006: Tower_Col_1
+    400008: Tower_Col_2
+    400010: Tower_Col_3
+    400012: Tower_Col_4
+    400014: Tower_Col_5
+    400016: Tower_Col_6
+    400018: Tower_Col_7
+    400020: Tower_Col_8
+    2300000: Base_Col
+    2300002: Detail_Col
+    2300004: Tower_Col_1
+    2300006: Tower_Col_2
+    2300008: Tower_Col_3
+    2300010: Tower_Col_4
+    2300012: Tower_Col_5
+    2300014: Tower_Col_6
+    2300016: Tower_Col_7
+    2300018: Tower_Col_8
+    3300000: Base_Col
+    3300002: Detail_Col
+    3300004: Tower_Col_1
+    3300006: Tower_Col_2
+    3300008: Tower_Col_3
+    3300010: Tower_Col_4
+    3300012: Tower_Col_5
+    3300014: Tower_Col_6
+    3300016: Tower_Col_7
+    3300018: Tower_Col_8
+    4300000: Base_Col
+    4300002: Tower_Detail_Col
+    4300004: Tower_Col_8
+    4300006: Tower_Col_7
+    4300008: Tower_Col_6
+    4300010: Tower_Col_5
+    4300012: Tower_Col_4
+    4300014: Tower_Col_3
+    4300016: Tower_Col_2
+    4300018: Tower_Col_1
+    4300020: Detail_Col
+    11100000: //RootNode
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    handles: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  additionalBone: 1
+  animationType: 1
+  userData: 

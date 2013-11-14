@@ -45,7 +45,7 @@ namespace Pathfinding {
 					case 1: return "Node Connections";
 					case 2: return "Node Connection Costs";
 					case 3: return "Node Positions";
-					case 4: return "Run Length Encoding";
+					case 4: return "Run Length Encoding";//asd
 				}
 				return null;
 			}
