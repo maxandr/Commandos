@@ -5,6 +5,7 @@
 /// </summary>
 using UnityEngine;
 using System.Collections;
+using Pathfinding;
 
 public class MovePlayer : MonoBehaviour
 {
@@ -21,14 +22,17 @@ public class MovePlayer : MonoBehaviour
 	public float a_WalkSpeed = 2;
 	private bool walk;
 	private bool CanTouchUp = false;
-
+	Seeker seeker;
 	private void Start ()
 	{
+		seeker = GetComponent<Seeker>();
 		animation [a_Idle.name].speed = a_IdleSpeed;
 		animation [a_Walk.name].speed = a_WalkSpeed;
 		animation.CrossFade (a_Idle.name);
 	}
-
+	 public void OnPathComplete (Path p) {
+        Debug.Log ("Yey, we got a path back. Did it have an error? "+p.error);
+    }
 	private void Update ()
 	{
 #if UNITY_EDITOR
@@ -38,6 +42,7 @@ public class MovePlayer : MonoBehaviour
 			ray = UnityEngine.Camera.mainCamera.ScreenPointToRay (Input.mousePosition);
 			if (Physics.Raycast (ray, out hit, 10000.0f)) {
 				target = hit.point;
+				seeker.StartPath (transform.position,target, OnPathComplete);
 			}
 		}
 #else
@@ -58,7 +63,8 @@ public class MovePlayer : MonoBehaviour
 		}
 #endif
 		LookAtThis ();
-		MoveTo ();
+		
+		//MoveTo ();
 	}
 
 	private void CalculateAngle (Vector3 temp)

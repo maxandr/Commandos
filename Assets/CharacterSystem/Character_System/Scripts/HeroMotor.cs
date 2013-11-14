@@ -8,7 +8,7 @@ public delegate void EvadeDelegate (string s);
 public delegate void SneakDelegate (bool b);
 
 [RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(CapsuleCollider))]
+//[RequireComponent(typeof(CapsuleCollider))]
 
 public class HeroMotor : MonoBehaviour
 {
